@@ -3,14 +3,14 @@ import numpy as np
 from ultralytics import YOLO
 
 # Load YOLOv8 model
-model = YOLO('yolov8n.pt')
+model = YOLO('../yolov8n.pt')
 
 # Threshold for red color detection
 lower_red = np.array([0, 100, 100])
 upper_red = np.array([10, 255, 255])
 
 # Load video
-video_path = "volei2.mp4"
+video_path = "../volei2.mp4"
 cap = cv2.VideoCapture(video_path)
 
 ret = True

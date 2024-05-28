@@ -6,10 +6,10 @@ import customtkinter as tk
 
 def main():
     # Load the YOLOv8 model
-    model = YOLO('yolov8n.pt')
+    model = YOLO('../yolov8n.pt')
 
     # Open the video file
-    video_path = "volei.mp4"
+    video_path = "../volei.mp4"
     cap = cv2.VideoCapture(video_path)
 
     # Create a Tkinter window
@@ -19,11 +19,6 @@ def main():
     root.title("Tracking app")
     root.geometry("700x400")
     root.resizable(width=False,height=False)
-
-    # Create a label to display ball speed
-    title_label = tk.CTkLabel(root, text="Para fechar o programa clique na tecla q")
-    title_label.pack()
-
 
     tabview = tk.CTkTabview(root, width=400, corner_radius=20, border_width=5, border_color="red",
                              segmented_button_selected_color="blue", segmented_button_unselected_hover_color="blue")
@@ -46,7 +41,7 @@ def main():
     def euclidean_distance(p1, p2):
         return np.sqrt((p1[0] - p2[0]) ** 2 + (p1[1] - p2[1]) ** 2)
 
-    # Função para calcular a velocidade média entre dois pontos
+
     # Escala do vídeo (metros por pixel)
     escala_video = 0.031 # Ajuste conforme necessário
 

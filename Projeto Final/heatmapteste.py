@@ -1,20 +1,17 @@
 import pandas as pd
 import matplotlib.pyplot as plt
 
-# Lendo os dados do arquivo CSV e convertendo para inteiros
 data = pd.read_csv('player_positions.csv', header=None, dtype=int)
 
-# Inicializando um dicionário para armazenar os contadores para cada ID
 id_counters = {}
 
 # Criação da matriz
 linhas = 3
 colunas = 6
 
-# Criando uma matriz 4x6 preenchida com zeros
+# Matriz 4x6 preenchida com zeros
 matrix = [[0 for _ in range(colunas)] for _ in range(linhas)]
 
-# Definindo os limites das células da quadra
 y1 = 78
 y2 = 78 * 2
 y3 = 234
@@ -26,7 +23,6 @@ x4 = 225 * 4
 x5 = 225 * 5
 x6 = 1350
 
-# Contando a quantidade de jogadores em cada célula da matriz
 for row in data.itertuples(index=False):
     id_, x, y = row[0], row[1], row[2]
     valx = x - 312
@@ -62,7 +58,7 @@ for row in data.itertuples(index=False):
 matrixmax = max(max(row) for row in matrix)
 matrixmin = min(min(row) for row in matrix)
 
-# Definir os limiares para as cores
+
 som = matrixmax - matrixmin
 div = som / 4
 
@@ -74,7 +70,6 @@ vermelho = matrixmax
 # Inicializar a matriz de cores
 matrixcores = [[0 for _ in range(colunas)] for _ in range(linhas)]
 
-# Atribuir cores com base nos limiares
 for linha in range(len(matrix)):
     for coluna in range(len(matrix[linha])):
         val = matrix[linha][coluna]
@@ -91,12 +86,12 @@ for linha in range(len(matrix)):
 
 class VolleyballCourt:
     def __init__(self):
-        self.length = 18  # comprimento da quadra em metros
-        self.width = 9    # largura da quadra em metros
+        self.length = 18  # comprimento
+        self.width = 9    # largura
         self.divisions_x = 6  # número de divisões horizontais
         self.divisions_y = 3  # número de divisões verticais
 
-    def draw(self, matrixcores):
+    def draw(self, matrixcores, columns=None, save_path=None):
         fig, ax = plt.subplots(figsize=(12, 6))
 
         # Desenho do campo
@@ -116,25 +111,25 @@ class VolleyballCourt:
 
         # Adicionando heatmap
         if matrixcores is not None:
+            if columns is None:
+                columns = range(self.divisions_x)
             for i in range(self.divisions_y):
-                for j in range(self.divisions_x):
+                for j in columns:
                     color_val = matrixcores[i][j]
                     if color_val != -1:  # Ignorar quadrados com valor -1
                         color = self.get_color_from_value(color_val)  # Obtém a cor correspondente ao valor
                         ax.add_patch(plt.Rectangle((j * self.length / self.divisions_x, (self.divisions_y - i - 1) * self.width / self.divisions_y), self.length / self.divisions_x, self.width / self.divisions_y, facecolor=color, edgecolor='none'))
 
-        # Remover rótulos dos eixos x e y
         ax.axis('off')
 
         plt.title('Heatmap')
 
-        plt.show()
+        if save_path:
+            plt.savefig(save_path)  # Salvar a figura se o caminho de salvamento for fornecido
+        else:
+            plt.show()
 
     def get_color_from_value(self, value):
-        colors = {0: 'green', 1: 'yellow', 2: 'orange', 3: 'red', -1: 'white'}  # Mapeamento de valores para cores
-        return colors.get(value, 'white')  # Retorna a cor correspondente ao valor ou branco se não houver correspondência
+        colors = {0: 'green', 1: 'yellow', 2: 'orange', 3: 'red', -1: 'white'}
+        return colors.get(value, 'white')
 
-# Exemplo de uso
-court = VolleyballCourt()
-print(matrixcores)
-court.draw(matrixcores)
