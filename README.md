@@ -54,9 +54,7 @@ This project was developed in collaboration with Esmoriz Ginásio Clube, whose s
 
 ---
 
----
-
 📫 Contact
 
-GitHub: [Jorge Ferreira](https://github.com/JorgeFerreiraa)
+GitHub: [Jorge Ferreira](https://github.com/JorgeFerreiraa) <br>
 LinkedIn: [Jorge Ferreira](https://www.linkedin.com/in/jorge-ferreira-015668311/)
