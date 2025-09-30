@@ -37,6 +37,7 @@ In addition to player detection, the system generates **heatmaps of player movem
 - 📈 Comparative team statistics & dashboards
 - 🌐 Interactive web interface for analysis
 
+---
 
 ## Heatmap Outputs, bounding boxes & player speeds
 
@@ -45,6 +46,17 @@ In addition to player detection, the system generates **heatmaps of player movem
 <img width="1199" height="596" alt="{0CEEDBB6-C89F-4E40-AAD6-982F2DFF3A5B}" src="https://github.com/user-attachments/assets/279474bf-d2d8-4ea3-9764-57e5ba55a617" />
 <img width="1103" height="643" alt="{DF635F2B-F23C-495F-8FF2-BA6695AEBC33}" src="https://github.com/user-attachments/assets/0d5bd3c5-e227-488a-bc28-b601d8bfb573" />
 
+--- 
+
 🤝 Acknowledgements
 
 This project was developed in collaboration with Esmoriz Ginásio Clube, whose support and match footage made this work possible.
+
+---
+
+---
+
+📫 Contact
+
+GitHub: [Jorge Ferreira](https://github.com/JorgeFerreiraa)
+LinkedIn: [Jorge Ferreira](https://www.linkedin.com/in/jorge-ferreira-015668311/)
